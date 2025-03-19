@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "grpc_poc/proto";
+
+service HelloService {
+  rpc SayHello (Message) returns (Message);
+  rpc SayHelloStream (Message) returns (stream Message);
+  rpc BiDiHello (stream Message) returns (stream Message);
+}
+
+message Message {
+  string client_id = 1;
+  string code = 2;
+  string message = 3;
+}
